@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - [Votre Nom]</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            transition: all 0.2s;
+        }
+
+        /* ---------- TYPOGRAPHIE ---------- */
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #0b1a2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #4a5b6e;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 4px solid #eef2f7;
+            color: #0b1a2a;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2 i {
+            color: #2d7aff;
+            font-size: 1.6rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.2rem 0 0.3rem 0;
+            color: #1e2a3a;
+        }
+
+        a {
+            color: #2d7aff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #1a4fbf;
+            text-decoration: underline;
+        }
+
+        /* ---------- EN-TÊTE ---------- */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .header-left {
+            flex: 2;
+            min-width: 240px;
+        }
+
+        .header-right {
+            flex: 1;
+            min-width: 200px;
+            text-align: right;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            margin-top: 0.5rem;
+        }
+
+        .header-right i {
+            width: 1.6rem;
+            color: #2d7aff;
+        }
+
+        .header-right p {
+            margin: 0.3rem 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef3ff;
+            color: #1a4fbf;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+        }
+
+        /* ---------- ABOUT ---------- */
+        .about {
+            background: #f8faff;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            border-left: 6px solid #2d7aff;
+        }
+
+        /* ---------- GRILLE COMPÉTENCES ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .skill-category {
+            background: #f8faff;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #2d7aff;
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.4rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category ul li {
+            margin: 0.35rem 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .skill-category ul li i {
+            color: #2d7aff;
+            font-size: 0.75rem;
+            width: 1.2rem;
+        }
+
+        /* ---------- PROJETS ---------- */
+        .project {
+            background: #ffffff;
+            border: 1px solid #eef2f7;
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin: 1rem 0;
+            transition: 0.15s;
+        }
+
+        .project:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.4rem 0 0.2rem 0;
+        }
+
+        .project-tech span {
+            background: #eef3ff;
+            color: #1a3f7a;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            letter-spacing: 0.02em;
+        }
+
+        .project p {
+            margin: 0.6rem 0 0 0;
+            color: #2c3e50;
+        }
+
+        /* ---------- EXPÉRIENCE ---------- */
+        .experience-item {
+            margin: 1.2rem 0;
+        }
+
+        .experience-item .meta {
+            font-weight: 500;
+            color: #1e2a3a;
+        }
+
+        .experience-item .date {
+            font-weight: 400;
+            color: #6b7a8e;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .experience-item ul {
+            padding-left: 1.5rem;
+            margin-top: 0.2rem;
+            color: #2c3e50;
+        }
+
+        /* ---------- FORMATION / INTÉRÊTS ---------- */
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            margin: 0.5rem 0;
+        }
+
+        .info-row strong {
+            min-width: 100px;
+            color: #1e2a3a;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .interests span {
+            background: #f1f4fa;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+
+        .interests i {
+            color: #2d7aff;
+            margin-right: 0.4rem;
+        }
+
+        /* ---------- CONTACT / FOOTER ---------- */
+        .contact-section {
+            margin-top: 2.5rem;
+            padding-top: 1.8rem;
+            border-top: 2px solid #eef2f7;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            margin: 0 0.8rem 0.4rem 0;
+            font-size: 1rem;
+        }
+
+        .contact-links i {
+            margin-right: 0.3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0b1a2a;
+            color: white;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1e2a3a;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn i {
+            margin-right: 0.5rem;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .header-right {
+                text-align: left;
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            .header {
+                flex-direction: column;
+            }
+
+            .about {
+                padding: 1rem;
+            }
+
+            .project {
+                padding: 1rem;
+            }
+
+            .contact-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0.2in;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0.5rem;
+            }
+            .btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ==================== EN-TÊTE ==================== -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Jean Dupont</h1>
+                <div class="subtitle">Développeur Full-Stack &amp; Créateur d'expériences digitales</div>
+                <span class="badge"><i class="fas fa-code"></i> 5+ ans d'expérience</span>
+            </div>
+            <div class="header-right">
+                <p><i class="fas fa-envelope"></i> jean.dupont@email.com</p>
+                <p><i class="fas fa-phone-alt"></i> +33 6 12 34 56 78</p>
+                <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
+                <p>
+                    <i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/jeandupont</a> &nbsp;
+                    <i class="fab fa-github"></i> <a href="#">github.com/jeandupont</a>
+                </p>
+            </div>
+        </header>
+
+        <!-- ==================== À PROPOS ==================== -->
+        <section class="about">
+            <p style="font-size:1.05rem;">
+                <i class="fas fa-quote-left" style="color:#2d7aff;margin-right:0.5rem;"></i>
+                Développeur passionné par la création de solutions web innovantes et performantes.
+                J'allie expertise technique et sens du design pour offrir des expériences utilisateur fluides.
+                Toujours en veille, j'aime transformer des idées en produits digitaux robustes et évolutifs.
+            </p>
+        </section>
+
+        <!-- ==================== COMPÉTENCES ==================== -->
+        <h2><i class="fas fa-cogs"></i> Compétences techniques</h2>
+        <div class="skills-grid">
+
+            <div class="skill-category">
+                <h4>Front-end</h4>
+                <ul>
+                    <li><i class="fas fa-circle"></i> React &amp; Next.js</li>
+                    <li><i class="fas fa-circle"></i> Vue.js / Nuxt</li>
+                    <li><i class="fas fa-circle"></i> TypeScript</li>
+                    <li><i class="fas fa-circle"></i> Tailwind / Sass</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Back-end</h4>
+                <ul>
+                    <li><i class="fas fa-circle"></i> Node.js / Express</li>
+                    <li><i class="fas fa-circle"></i> Python (Django, Flask)</li>
+                    <li><i class="fas fa-circle"></i> PHP (Laravel)</li>
+                    <li><i class="fas fa-circle"></i> API REST &amp; GraphQL</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Base de données</h4>
+                <ul>
+                    <li><i class="fas fa-circle"></i> PostgreSQL / MySQL</li>
+                    <li><i class="fas fa-circle"></i> MongoDB</li>
+                    <li><i class="fas fa-circle"></i> Firebase / Supabase</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Outils &amp; DevOps</h4>
+                <ul>
+                    <li><i class="fas fa-circle"></i> Git / GitHub / GitLab</li>
+                    <li><i class="fas fa-circle"></i> Docker / AWS</li>
+                    <li><i class="fas fa-circle"></i> CI/CD (GitHub Actions)</li>
+                    <li><i class="fas fa-circle"></i> Figma / Adobe XD</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ==================== PROJETS ==================== -->
+        <h2><i class="fas fa-folder-open"></i> Projets marquants</h2>
+
+        <div class="project">
+            <h3>🛒 ShopVerse — Plateforme E-commerce</h3>
+            <div class="project-tech">
+                <span>React</span><span>Node.js</span><span>MongoDB</span><span>Stripe</span>
+            </div>
+            <p>
+                Boutique en ligne complète avec paiement sécurisé, dashboard admin,
+                et optimisation des performances (temps de chargement &lt; 2s).
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>📋 TaskFlow — Gestion de projet collaborative</h3>
+            <div class="project-tech">
+                <span>Vue.js</span><span>Django</span><span>PostgreSQL</span><span>Docker</span>
+            </div>
+            <p>
+                Application de gestion de tâches en temps réel avec notifications push,
+                système de rôles et déploiement sur AWS via conteneurs.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>🎨 Portfolio interactif — Artiste numérique</h3>
+            <div class="project-tech">
+                <span>HTML/CSS</span><span>JavaScript</span><span>Three.js</span>
+            </div>
+            <p>
+                Site vitrine immersif avec animations 3D, galerie dynamique et formulaire de contact.
+            </p>
+        </div>
+
+        <!-- ==================== EXPÉRIENCE ==================== -->
+        <h2><i class="fas fa-briefcase"></i> Expérience professionnelle</h2>
+
+        <div class="experience-item">
+            <div class="meta">
+                Développeur Full-Stack <span class="date">— TechSolutions · 2022 – Aujourd'hui</span>
+            </div>
+            <ul>
+                <li>Conception et développement de microservices avec Node.js et Docker.</li>
+                <li>Optimisation des bases de données PostgreSQL et mise en place de caches Redis.</li>
+                <li>Encadrement de deux stagiaires et participation aux revues de code en Agile.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="meta">
+                Développeur Front-end <span class="date">— WebStudio · 2020 – 2022</span>
+            </div>
+            <ul>
+                <li>Intégration de maquettes Figma en composants React réutilisables.</li>
+                <li>Amélioration de l'accessibilité et des performances (Lighthouse &gt; 90).</li>
+                <li>Collaboration avec les équipes design et back-end sur plusieurs projets clients.</li>
+            </ul>
+        </div>
+
+        <!-- ==================== FORMATION ==================== -->
+        <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
+
+        <div class="info-row">
+            <strong>2020</strong>
+            <span>Master en Ingénierie Logicielle — Université Paris-Saclay</span>
+        </div>
+        <div class="info-row">
+            <strong>Certifications</strong>
+            <span>AWS Cloud Practitioner · Scrum Master (PSM I)</span>
+        </div>
+
+        <!-- ==================== CENTRES D'INTÉRÊT ==================== -->
+        <h2><i class="fas fa-heart"></i> Centres d'intérêt</h2>
+        <div class="interests">
+            <span><i class="fas fa-code"></i> Open-source &amp; veille tech</span>
+            <span><i class="fas fa-lightbulb"></i> Hackathons</span>
+            <span><i class="fas fa-running"></i> Running</span>
+            <span><i class="fas fa-camera"></i> Photographie</span>
+            <span><i class="fas fa-plane"></i> Voyage</span>
+        </div>
+
+        <!-- ==================== CONTACT / FOOTER ==================== -->
+        <div class="contact-section">
+            <div class="contact-links">
+                <a href="#"><i class="fas fa-envelope"></i> jean.dupont@email.com</a>
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <a href="#" class="btn"><i class="fas fa-file-pdf"></i> Télécharger mon CV</a>
+        </div>
+
+        <p style="text-align:center;margin-top:2rem;font-size:0.85rem;color:#6b7a8e;">
+            &copy; 2026 Jean Dupont — Portfolio réalisé avec <i class="fas fa-heart" style="color:#e74c3c;"></i>
+        </p>
+
+    </div>
+    <!-- fin .container -->
+
+</body>
+</html>
